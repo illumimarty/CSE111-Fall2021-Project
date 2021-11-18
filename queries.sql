@@ -1,7 +1,6 @@
 
--- Queries
-
--- drop table ;
+-- Use Case Queries
+-- LINK: adding images to SQL database in Python [https://www.geeksforgeeks.org/how-to-insert-image-in-sqlite-using-python/]
 
 -- List all members working on design projects
 SELECT "----------";
@@ -37,6 +36,14 @@ insert into Task values (11, 4, 'Write down ideas for workshops, games/activitie
 insert into TaskAssignee values
     (11, 9),
     (11, 7);
+
+-- Inserting a new comment onto new Logistics task 
+insert into Comment values
+    (11, 5, 1, "Let's play Garticphone!", datetime('now','localtime'));
+
+-- Inserting an image (binary for '$') to task specs for creating design stickers
+insert into Image values
+    (10, 2, x'00100100');
 
 -- Tracking the statuses for all Engineering tasks
 SELECT "----------";
