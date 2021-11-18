@@ -30,7 +30,8 @@ CREATE TABLE Task (
     Title string,
     DueDate varchar,
     Details string,
-    Image varbinary
+    Image varbinary,
+    Status char(15)
 );
 
 CREATE TABLE TaskAssignee (
