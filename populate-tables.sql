@@ -17,16 +17,16 @@ insert into Board values
     (3, 'Directors');
 
 insert into Task VALUES
-    (1, 1, 'New Hover Animation', '11-20-2021', 'Make it so that hovering an image enlarges the image', NULL),
-    (2, 1, 'Fix Text Flexing Into New Line', '01-15-2021', 'Change the width and display property of the text', NULL),
-    (3, 1, 'New Page: Hacktually 2', '11-13-2021', 'Render all the pages onto the MLH Local Hack Learn Day page', NULL),
-    (4, 1, 'Bug: HTML code breaking the website', '10-10-2021', 'URGENT pls someone fix the website aaaa', NULL),
-    (5, 1, 'Fix: Make Sponsors Component responsive!', '12-26-2021', 'At lower resolution widths, the component is too big', NULL),
-    (6, 2, 'Design: presentation slides', '12-31-2021', 'for opening and closing ceremony (animations)', NULL),
-    (7, 2, 'Design: room banners', '12-01-2021', 'Design pages for organizer rooms, judging rooms, etc.', NULL),
-    (8, 2, 'Design: team jackets', '11-01-2021', 'long-sleeve, small image', NULL),
-    (9, 2, 'Design: applications are open post', '01-15-2022', 'square and 1080x1080', NULL),
-    (10, 2, 'Design: 10 stickers', '01-01-2022', 'very cute', NULL);
+    (1, 1, 'New Hover Animation', '11-20-2021', 'Make it so that hovering an image enlarges the image', NULL, 'IN PROGRESS'),
+    (2, 1, 'Fix Text Flexing Into New Line', '01-15-2021', 'Change the width and display property of the text', NULL, 'COMPLETED'),
+    (3, 1, 'New Page: Hacktually 2', '11-13-2021', 'Render all the pages onto the MLH Local Hack Learn Day page', NULL, 'COMPLETED'),
+    (4, 1, 'Bug: HTML code breaking the website', '10-10-2021', 'URGENT pls someone fix the website aaaa', NULL, 'COMPLETED'),
+    (5, 1, 'Fix: Make Sponsors Component responsive!', '12-26-2021', 'At lower resolution widths, the component is too big', NULL, 'TO DO'),
+    (6, 2, 'Design: presentation slides', '12-31-2021', 'for opening and closing ceremony (animations)', NULL, 'TO DO'),
+    (7, 2, 'Design: room banners', '12-01-2021', 'Design pages for organizer rooms, judging rooms, etc.', NULL, 'IN PROGRESS'),
+    (8, 2, 'Design: team jackets', '11-01-2021', 'long-sleeve, small image', NULL, 'COMPLETED'),
+    (9, 2, 'Design: applications are open post', '01-15-2022', 'square and 1080x1080', NULL, 'TO DO'),
+    (10, 2, 'Design: 10 stickers', '01-01-2022', 'very cute', NULL, 'TO DO');
 
 insert into BoardUsers values
 -- bId, uId
