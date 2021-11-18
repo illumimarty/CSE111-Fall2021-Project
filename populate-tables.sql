@@ -20,9 +20,9 @@ CREATE TABLE Board (
 CREATE TABLE Task (
     TaskId int,
     BoardId int,
+    Title, string,
     DueDate varchar,
     Details string,
-    CommentList string,
     Image varbinary,
 );
 
@@ -51,7 +51,7 @@ CREATE TABLE Image (
 );
 
 -- Populate Tables
-insert into user values
+insert into User values
     (1, 'mnodado', 'nodado'),
     (2, 'tchan', 'chan'),
     (3, 'adarian', 'darian'),
@@ -61,22 +61,61 @@ insert into user values
     (7, 'aestrella', 'estrella'),
     (8, 'aross', 'ross'),
     (9, 'sduong', 'sduong'),
-    (10, 'flira', 'flira'),;
+    (10, 'flira', 'flira');
 
-insert into board values
+insert into Board values
     (1, 'Engineering'),
     (2, 'Design'),
-    (3, 'Directors'),
-    (4, 'Logistics'),
-    (5, 'Marketing');
+    (3, 'Directors');
 
-insert into tasks VALUES
-    ;
+insert into Task VALUES
+    (6, 2, 'Design: presentation slides', '2021-12-31', 'for opening and closing ceremony (animations)'),
+    (7, 2, 'Design: room banners'), '2021-12-01', 'Design pages for organizer rooms, judging rooms, etc.'),
+    (8, 2, 'Design: team jackets', '2021-11-01', 'long-sleeve, small image'),
+    (9, 2, 'Design: applications are open post', '2022-01-15', 'square and 1080x1080'),
+    (10, 2, 'Design: 10 stickers', '2022-01-01', 'very cute');
 
-insert into boardusers values
+
+
+insert into BoardUsers values
 -- bId, uId
     (1, 2),
     (1, 3),
     (1, 6),
     (1. 8),
+    (1, 9)
+    (2, 1),
+    (2, 4),
+    (2, 5),
+    (2, 6),
+    (2, 10),
+    (3, 1),
+    (3, 2),
+    (3, 5),
+    (3, 6),
+    (3, 7);
+
+insert into TaskAssignee values
+-- tId, uId
+    (6, 1),
+    (7, 6),
+    (8, 5),
+    (9, 10),
+    (10, 1),
+    (10, 5),
+    (10, 10);
+
+insert into Assignee values
+    (1, 'mnodado'),
+    (2, 'tchan'),
+    (3, 'adarian'),
+    (4, 'msingh'),
+    (5, 'asiaotong'),
+    (6, 'mdelosreyes'),
+    (7, 'aestrella'),
+    (8, 'aross'),
+    (9, 'sduong'),
+    (10, 'flira');
+
+
 -- Queries
