@@ -15,8 +15,8 @@ CREATE TABLE User (
 );
 
 CREATE TABLE BoardUsers (
-    UserId int,
-    BoardId int
+    BoardId int,
+    UserId int
 );
 
 CREATE TABLE Board (
