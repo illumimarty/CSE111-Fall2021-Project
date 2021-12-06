@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3')
 const Promise = require('bluebird')
 
 
-class Computers {
+class Tasks {
     constructor(dbFilePath) {
         this.db = new sqlite3.Database(dbFilePath, (err) => {
             if (err) {
@@ -27,9 +27,9 @@ class Computers {
         })
     }
 
-    allMakers() {
+    allUsers() {
         return this.all(
-            "SELECT DISTINCT maker FROM Product ORDER BY maker", [])
+            "SELECT Username FROM User ORDER BY Username", [])
     }
 
     pcsByMaker(_maker) {
@@ -68,4 +68,4 @@ class Computers {
     }
 }
 
-module.exports = Computers
+module.exports = Tasks
