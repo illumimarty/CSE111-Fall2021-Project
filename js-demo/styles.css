@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    height: 100vh;
+}
+.board-container {
+    background-color: #E0B87C;
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-row: auto;
+    margin: 0 auto;
+    border-radius: 25px;
+    width: 85%;
+    height: 90%;
+}
+table {
+    background-color: white;
+    display: inline-block;
+    width: 80%;
+    height: 75%;
+    border-radius: 25px;
+    padding: 0% 2% 0% 2%;
+    margin: 28% auto auto auto;
+    overflow: auto;
+}

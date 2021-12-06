@@ -2,9 +2,9 @@
 <html> 
 
 <head>
-    <meta charset="utf-8">
-    <title>Tasks Database</title>
-
+   <meta charset="utf-8">
+   <title>Tasks Database</title>
+   <link rel="stylesheet" type="text/css" href="/js-demo/styles.css" />
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
    <script>
@@ -34,39 +34,62 @@
          var selBoard = document.getElementById('board').value;
          console.log(selBoard);
 
-         var result = document.getElementById('result');
-         result.innerHTML = "";
+         var colToDo = document.getElementById('to-do');
+         colToDo.innerHTML = "";
+         var colInProgress = document.getElementById('in-progress');
+         colInProgress.innerHTML = "";
+         var colCompleted = document.getElementById('completed');
+         colCompleted.innerHTML = "";
 
          const API_URL = `http://127.0.0.1:8092/boards/${selBoard}`;
          axios.get(`${API_URL}`)
             .then(response => {
-               //console.log(response.data.data);
+               console.log(response.data.data);
 
                if (response.data.data.length == 0) {
                   return;
                }
-
+               
+               /*
                let thead = result.createTHead();
                let row = thead.insertRow();
                for (key in response.data.data[0]) {
-                  //console.log(key);
+                  console.log(key);
 
                   let th = document.createElement("th");
                   let text = document.createTextNode(key);
                   th.appendChild(text);
                   row.appendChild(th);
                }
-               
-               for (x=0; x<response.data.data.length; x++) {
-                  console.log(response.data.data[x].board);
+               */
 
-                  let row = result.insertRow();
+               for (x=0; x<response.data.data.length; x++) {
+                  //console.log(response.data.data[x].boardId);
+
                   for (k in response.data.data[x]) {
                      console.log(k);
 
-                     let cell = row.insertCell();
-                     let text = document.createTextNode(response.data.data[x][k]);
-                     cell.appendChild(text);
+                     if (response.data.data[x].Status == 'TO DO') {
+                        let row = colToDo.insertRow();
+                        let cell = row.insertCell();
+                        let text = document.createTextNode(response.data.data[x][k]);
+                        cell.appendChild(text);
+                        //console.log(text);
+                     }
+                     if (response.data.data[x].Status == 'IN PROGRESS') {
+                        let row = colInProgress.insertRow();
+                        let cell = row.insertCell();
+                        let text = document.createTextNode(response.data.data[x][k]);
+                        cell.appendChild(text);
+                        //console.log(text);
+                     }
+                     if (response.data.data[x].Status == 'COMPLETED') {
+                        let row = colCompleted.insertRow();
+                        let cell = row.insertCell();
+                        let text = document.createTextNode(response.data.data[x][k]);
+                        cell.appendChild(text);
+                        //console.log(text);
+                     }
                   }
                }
             })
@@ -80,7 +103,6 @@
 <body onload="populateBoards()">
    <label>Board:</label>
    <select name="board" id="board">
-      <option value=''>------- Select --------</option>
       <option value='All'>All</option>
    </select>
 
@@ -88,7 +110,11 @@
 
    <br><br><br>
 
-   <table name="result" id="result"></table>
+   <div class="board-container">
+      <table id="to-do"></table>
+      <table id="in-progress"></table>
+      <table id="completed"></table>
+   </div>
 </body>
 
 </html>
