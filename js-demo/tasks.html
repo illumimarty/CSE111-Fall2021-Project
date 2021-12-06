@@ -101,16 +101,21 @@
 </head>
     
 <body onload="populateBoards()">
-   <label>Board:</label>
-   <select name="board" id="board">
-      <option value='All'>All</option>
-   </select>
-
-   <button name="runQ" onclick="runQuery()">Find</button>
-
-   <br><br><br>
+   <div class="header">
+      <div class="MTB">My Task Board</div>
+      <div class="dropdown-menu">
+         <label>Board:</label>
+         <select name="board" id="board">
+            <option value='All'>All</option>
+         </select>
+         <button name="runQ" onclick="runQuery()">Find</button>
+      </div>
+   </div>
 
    <div class="board-container">
+      <div class="todo">To-do</div>
+      <div class="ip">In Progress</div>
+      <div class="compl">Complete</div>
       <table id="to-do"></table>
       <table id="in-progress"></table>
       <table id="completed"></table>

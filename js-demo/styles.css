@@ -2,23 +2,106 @@ body {
     margin: 0;
     height: 100vh;
 }
+.header {
+    padding: 1% 8%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.header .MTB {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: bold;
+}
+.header .dropdown-menu {
+    display: inline-block;
+    align-self: flex-end;
+    justify-self: center;
+}
+
+
 .board-container {
     background-color: #E0B87C;
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
-    grid-row: auto;
-    margin: 0 auto;
+    grid-template-rows: 15% auto;
+    margin: 0% auto 3% auto;
     border-radius: 25px;
     width: 85%;
-    height: 90%;
+    height: 85%;
+    box-shadow: 0px 8px 10px rgb(185, 185, 185), 
+        -10px 8px 15px rgb(185, 185, 185), 10px 8px 15px rgb(185, 185, 185);
 }
-table {
+.board-container .todo {
+    text-align: center;
+    background-color: #8FBCFF;
+    margin: auto auto 0 auto;
+    border-radius: 12px;
+    width: 48%;
+    padding: 1%;
+    font-size: 40px;
+    font-weight: bold;
+}
+.board-container .ip {
+    text-align: center;
+    background-color: #FFF386;
+    margin: auto auto 0 auto;
+    border-radius: 12px;
+    width: 48%;
+    padding: 1%;
+    font-size: 40px;
+    font-weight: bold;
+}
+.board-container .compl {
+    text-align: center;
+    background-color: #BCF2AA;
+    margin: auto auto 0 auto;
+    border-radius: 12px;
+    width: 48%;
+    padding: 1%;
+    font-size: 40px;
+    font-weight: bold;
+}
+.board-container table {
     background-color: white;
     display: inline-block;
     width: 80%;
-    height: 75%;
-    border-radius: 25px;
-    padding: 0% 2% 0% 2%;
-    margin: 28% auto auto auto;
+    height: 90%;
+    border-radius: 20px;
+    padding: 6% 7%;
+    margin: 5% auto auto auto;
     overflow: auto;
+    border-spacing: 0;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.board-container table tr:nth-child(5n + 1), tr:nth-child(5n + 2), tr:nth-child(5n + 3), tr:nth-child(5n + 4) {
+    background-color: #EAEAEA;
+    display: block;
+    padding: 0% 7%;
+}
+.board-container table tr:nth-child(5n + 1) {
+    padding-top: 5%;
+}
+.board-container table tr:nth-child(5n + 4) {
+    padding-bottom: 5%;
+}
+.board-container table tr:nth-child(5n + 3)::before {
+    content: "Due Date: ";
+}
+.board-container table tr:nth-child(5n + 3) {
+    width: 86%;
+    vertical-align: top;
+    display: inline-flex;
+}
+.board-container table tr:nth-child(5n + 4) {
+    font-weight: bold;
+    padding-top: 5%;
+}
+.board-container table tr:nth-child(5n + 5) {
+    visibility: hidden;
 }
