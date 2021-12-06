@@ -28,12 +28,12 @@ app.get("/", (req, res, next) => {
 });
 
 // Insert here other API endpoints
-app.get("/users", (req, res, next) => {
-    tasks.allUsers()
-        .then((users) => {
+app.get("/boards", (req, res, next) => {
+    tasks.allBoards()
+        .then((boards) => {
             res.json({
                 "message": "success",
-                "data": users
+                "data": boards
             })
         })
         .catch((err) => {

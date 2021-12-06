@@ -27,9 +27,9 @@ class Tasks {
         })
     }
 
-    allUsers() {
+    allBoards() {
         return this.all(
-            "SELECT Username FROM User ORDER BY Username", [])
+            "SELECT Title FROM Board ORDER BY Title", [])
     }
 
     pcsByMaker(_maker) {
