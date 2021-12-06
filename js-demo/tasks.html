@@ -32,12 +32,12 @@
 
       function runQuery() {
          var selBoard = document.getElementById('board').value;
-         //console.log(selBoard);
+         console.log(selBoard);
 
          var result = document.getElementById('result');
          result.innerHTML = "";
 
-         const API_URL = `http://127.0.0.1:8092/api/maker-prod/${selMaker}-${selProd}`;
+         const API_URL = `http://127.0.0.1:8092/boards/${selBoard}`;
          axios.get(`${API_URL}`)
             .then(response => {
                //console.log(response.data.data);
@@ -58,7 +58,7 @@
                }
                
                for (x=0; x<response.data.data.length; x++) {
-                  //console.log(response.data.data[x].maker);
+                  console.log(response.data.data[x].board);
 
                   let row = result.insertRow();
                   for (k in response.data.data[x]) {
@@ -81,16 +81,9 @@
    <label>Board:</label>
    <select name="board" id="board">
       <option value=''>------- Select --------</option>
+      <option value='All'>All</option>
    </select>
 
-   <!-- <label>Product type:</label>
-   <select name="product" id="product">
-      <option value='All'>All</option>
-      <option value='PC'>PC</option>
-      <option value='Laptop'>Laptop</option>
-      <option value='Printer'>Printer</option>
-   </select>
- -->
    <button name="runQ" onclick="runQuery()">Find</button>
 
    <br><br><br>

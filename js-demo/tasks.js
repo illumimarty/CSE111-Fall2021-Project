@@ -32,39 +32,37 @@ class Tasks {
             "SELECT Title FROM Board ORDER BY Title", [])
     }
 
-    pcsByMaker(_maker) {
+    allTasksInAllBoards () {
         return this.all(
-            "select P.model as model, PC.price as price " +
-            "from Product P, PC " +
-            "where P.model = PC.model AND " +
-            "maker = ?", [_maker])
-    }
-
-    productByMaker(_pType, _maker) {
-        return this.all(
-            "select P.model as model, " +
-            _pType + ".price as price " +
-            "from Product P, " + _pType +
-            " where P.model = " + _pType + ".model AND " +
-            "maker = ?", [_maker])
-    }
-
-    allProductsByMaker(_maker) {
-        return this.all(
-            "select P.model as model, P.type as type, PC.price as price " +
-            "from Product P, PC " +
-            "where P.model = PC.model AND " +
-            "maker = ?" +
+            "select BoardId, Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 1" +
             " UNION " +
-            "select P.model as model, P.type as type, L.price as price " +
-            "from Product P, Laptop L " +
-            "where P.model = L.model AND " +
-            "maker = ?" +
+            "select BoardId, Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 2" +
             " UNION " +
-            "select P.model as model, P.type as type, Pr.price as price " +
-            "from Product P, Printer Pr " +
-            "where P.model = Pr.model AND " +
-            "maker = ?", [_maker, _maker, _maker])
+            "select BoardId, Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 3", [])
+    }
+    allTasksInEngineering() {
+        return this.all(
+            "select Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 1", [])
+    }
+    allTasksInDesign() {
+        return this.all(
+            "select Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 2", [])
+    }
+    allTasksInDirectors() {
+        return this.all(
+            "select Title, DueDate, Details, Status " +
+            "from Task " +
+            "where BoardId = 3", [])
     }
 }
 

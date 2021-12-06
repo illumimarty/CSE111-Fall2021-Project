@@ -42,13 +42,13 @@ app.get("/boards", (req, res, next) => {
         })
 });
 
-app.get("/api/maker-prod/:maker-:prod", (req, res, next) => {
-    if (req.params.prod == "All") {
-        tasks.allProductsByMaker(req.params.maker)
-            .then((prods) => {
+app.get("/boards/:board", (req, res, next) => {
+    if (req.params.board == "All") {
+        tasks.allTasksInAllBoards(req.params.board)
+            .then((board) => {
                 res.json({
-                    "message": `Products by ${req.params.maker}`,
-                    "data": prods
+                    "message": `Tasks in ${req.params.board}`,
+                    "data": board
                 })
             })
             .catch((err) => {
@@ -56,12 +56,38 @@ app.get("/api/maker-prod/:maker-:prod", (req, res, next) => {
                 return;
             })
     }
-    else {
-        tasks.productByMaker(req.params.prod, req.params.maker)
-            .then((prods) => {
+    else if (req.params.board == "Engineering") {
+        tasks.allTasksInEngineering(req.params.board)
+            .then((board) => {
                 res.json({
-                    "message": `${req.params.prod} by ${req.params.maker}`,
-                    "data": prods
+                    "message": `Tasks in ${req.params.board}`,
+                    "data": board
+                })
+            })
+            .catch((err) => {
+                res.status(400).json({ "error": err.message });
+                return;
+            })
+    }
+    else if (req.params.board == "Design") {
+        tasks.allTasksInDesign(req.params.board)
+            .then((board) => {
+                res.json({
+                    "message": `Tasks in ${req.params.board}`,
+                    "data": board
+                })
+            })
+            .catch((err) => {
+                res.status(400).json({ "error": err.message });
+                return;
+            })
+    }
+    else if (req.params.board == "Directors") {
+        tasks.allTasksInDirectors(req.params.board)
+            .then((board) => {
+                res.json({
+                    "message": `Tasks in ${req.params.board}`,
+                    "data": board
                 })
             })
             .catch((err) => {
