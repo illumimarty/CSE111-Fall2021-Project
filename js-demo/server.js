@@ -56,34 +56,8 @@ app.get("/boards/:board", (req, res, next) => {
                 return;
             })
     }
-    else if (req.params.board == "Engineering") {
-        tasks.allTasksInEngineering(req.params.board)
-            .then((board) => {
-                res.json({
-                    "message": `Tasks in ${req.params.board}`,
-                    "data": board
-                })
-            })
-            .catch((err) => {
-                res.status(400).json({ "error": err.message });
-                return;
-            })
-    }
-    else if (req.params.board == "Design") {
-        tasks.allTasksInDesign(req.params.board)
-            .then((board) => {
-                res.json({
-                    "message": `Tasks in ${req.params.board}`,
-                    "data": board
-                })
-            })
-            .catch((err) => {
-                res.status(400).json({ "error": err.message });
-                return;
-            })
-    }
-    else if (req.params.board == "Directors") {
-        tasks.allTasksInDirectors(req.params.board)
+    else {
+        tasks.allTasksByBoard(req.params.board)
             .then((board) => {
                 res.json({
                     "message": `Tasks in ${req.params.board}`,

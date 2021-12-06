@@ -46,23 +46,12 @@ class Tasks {
             "from Task " +
             "where BoardId = 3", [])
     }
-    allTasksInEngineering() {
+    allTasksByBoard(_board) {
         return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 1", [])
-    }
-    allTasksInDesign() {
-        return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 2", [])
-    }
-    allTasksInDirectors() {
-        return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 3", [])
+            "select TaskId as id, Task.Title as title, Task.Status as status " +
+            "from Task, Board " +
+            "where Task.BoardId = Board.BoardId " + 
+            "and Board.Title = ?", [_board])
     }
 }
 
