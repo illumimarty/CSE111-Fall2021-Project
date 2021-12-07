@@ -1,6 +1,7 @@
 body {
     margin: 0;
     height: 100vh;
+    font-family: 'Roboto';
 }
 .header {
     padding: 1% 8%;
@@ -63,7 +64,7 @@ body {
 }
 .board-container table {
     background-color: white;
-    display: inline-block;
+    display: inline-flex;
     width: 80%;
     height: 90%;
     border-radius: 20px;
@@ -79,10 +80,8 @@ body {
     width: 0px;
     background: transparent; /* make scrollbar transparent */
 }
-.board-container:hover table:not(:hover) {
-    filter: blur(50%);
-    color: transparent;
-    text-shadow: 0 0 1px rgba(0,0,0,0.5);
+.board-container table tbody {
+    width: 100%;
 }
 .board-container table tr:nth-child(5n + 1), tr:nth-child(5n + 2), tr:nth-child(5n + 3), tr:nth-child(5n + 4) {
     background-color: #EAEAEA;
