@@ -8,11 +8,45 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <script>
+        function populateComments() {
+  
+           var colComments = document.getElementById('comments');
+           colComments.innerHTML = "";
+  
+           const API_URL = `http://127.0.0.1:8092/allcomments`;
+           axios.get(`${API_URL}`)
+              .then(response => {
+                 console.log(response.data.data);
+  
+                 if (response.data.data.length == 0) {
+                    return;
+                 }
+  
+                 for (x=0; x<response.data.data.length; x++) {
+                    //console.log(response.data.data[x].boardId);
+  
+                    for (k in response.data.data[x]) {
+                       console.log(k);
+  
+                        let row = colComments.insertRow();
+                        let cell = row.insertCell();
+                        let text = document.createTextNode(response.data.data[x][k]);
+                        cell.appendChild(text);
+                        //console.log(text);
+                    }
+                 }
+              })
+              .catch(error =>
+                 console.error('populateComments', error)
+              )
+        }
+    </script>
 </head>
     
-<body">
+<body onload="populateComments()">
     <div class="header">
-        <div class="MTB">My Task Form</div>
+        <div class="MTB">My Task Card</div>
         <a class="formbutton" href="tasks.html">Back to Board</a>
     </div>
 
@@ -20,24 +54,24 @@
         <div class="form">
             <div class="Title">
                 <h1>Title</h1>
-                <input>
+                <div>New Hover Animation</div>
             </div>
             <div class="Description">
                 <h1>Description</h1>
-                <input>
+                <div>Make it so that hovering an image enlarges the image</div>
             </div>
             <div class="DueDate">
                 <h1>Due Date</h1>
-                <input>
+                <div>2021-11-20</div>
             </div>
             <div class="Assignees">
                 <h1>Assignees</h1>
-                <input>
+                <div>tchan</div>
             </div>
             <div class="Comments">
                 <h1>Comments</h1>
                 <div class="comments-chatbox">
-                    
+                    <table id="comments"></table>
                 </div>
                 <input placeholder="I'm about to type a helpful comment!">
                 <button type="submit">Submit</button>

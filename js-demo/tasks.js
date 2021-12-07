@@ -53,6 +53,14 @@ class Tasks {
             "where Task.BoardId = Board.BoardId " + 
             "and Board.Title = ?", [_board])
     }
+
+    allComments() {
+        return this.all(
+            "select Comment.Timestamp, User.Username, Comment.Message, Task.Status " +
+            "from Comment, User, Task " +
+            "where Comment.UserId = User.UserId " +
+            "and Comment.TaskId = Task.TaskId", [])
+    }
 }
 
 module.exports = Tasks

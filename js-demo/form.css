@@ -75,9 +75,15 @@ body {
     height: 60%;
     background-color: #C4C4C4;
 }
+.container .form .Comments .comments-chatbox #comments {
+    padding: 2%;
+}
+.container .form .Comments .comments-chatbox #comments tr:nth-child(4n) {
+    visibility: hidden;
+}
 .container .form .Comments input {
     margin-top: 2%;
-    width: 60%;
+    width: 74.5%;
 }
 .container .form h1 {
     font-size: 20px;

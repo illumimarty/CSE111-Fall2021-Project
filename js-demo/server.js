@@ -71,6 +71,20 @@ app.get("/boards/:board", (req, res, next) => {
     }
 });
 
+app.get("/allcomments", (req, res, next) => {
+    tasks.allComments(req.params.allcomments)
+        .then((allcomments) => {
+            res.json({
+                "message": `Tasks in ${req.params.allcomments}`,
+                "data": allcomments
+            })
+        })
+        .catch((err) => {
+            res.status(400).json({ "error": err.message });
+            return;
+        })
+});
+
 // Default response for any other request
 app.use(function (req, res) {
     res.status(404);
