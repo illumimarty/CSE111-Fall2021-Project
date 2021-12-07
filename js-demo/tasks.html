@@ -4,7 +4,7 @@
 <head>
    <meta charset="utf-8">
    <title>Tasks Database</title>
-   <link rel="stylesheet" type="text/css" href="/js-demo/styles.css" />
+   <link rel="stylesheet" type="text/css" href="./styles.css" />
    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -32,10 +32,15 @@
       }
 
       function insertBoard() {
-         var boardTitle = document.getElementById('boardName').value;
+         // var boardTitle = document.getElementById('boardName').value;
+         let boardTitle = prompt("Enter new board name:");
+         if (boardTitle == null || boardTitle == "") {
+            alert("No board name specified.")
+            return
+         }
          console.log(boardTitle);
 
-         const API_URL = `http://127.0.0.1:8092/api/${boardTitle}/`;
+         const API_URL = `http://127.0.0.1:8092/api/${boardTitle}-${date}/`;
          axios.get(`${API_URL}`)
             .then(response => {
                console.log("Success!")
@@ -118,6 +123,7 @@
 <body onload="populateBoards()">
    <div class="header">
       <div class="MTB">My Task Board</div>
+      <button class="createboard" onclick="insertBoard()">Create Board</button>
       <a class="formbutton" href="form.html">Add to Board</a>
       <div class="dropdown-menu">
          <label>Board:</label>

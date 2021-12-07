@@ -87,8 +87,8 @@ app.get("/allcomments", (req, res, next) => {
         })
 });
 
-app.post("/api/:boardTitle", (req, res, next) => {
-    tasks.newBoard(req.body.boardTitle)
+app.get("/api/:boardTitle", (req, res, next) => {
+    tasks.newBoard(req.params.boardTitle)
         .then((boardTitle) => {
             res.json({
                 "message": `added the following board`,
