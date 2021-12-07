@@ -44,23 +44,6 @@
             )
       }
 
-      function insertTask() {
-         var taskTitle = document.getElementById('taskTitle').value;
-         var taskDueDate= document.getElementById('taskDueDate').value;
-         var taskDetails = document.getElementById('taskDetails').value;
-         // console.log(boardTitle);
-
-         const API_URL = `http://127.0.0.1:8092/api/designtask/${taskTitle}-${taskDueDate}-${taskDetails}`;
-         axios.post(`${API_URL}`)
-            .then(response => {
-               // console.log("Success!")
-               console.log(response.data)
-            })
-            .catch(error =>
-               console.error('insertBoard', error)
-            )
-      }
-
       function runQuery() {
          var selBoard = document.getElementById('board').value;
          console.log(selBoard);
@@ -119,18 +102,12 @@
 
    <br><br>
 
-   <!-- <label>Insert New Board:</label><br>
+   <label>Insert New Board:</label><br>
    <label>Title:</label>
    <input type="text" id="boardName" name="boardName">
 
-   <button name="insertTup" onclick="insertBoard()">Add</button> -->
+   <button name="insertTup" onclick="insertBoard()">Add</button>
 
-   <label>Insert New Task:</label><br>
-   <label>Title:</label><input type="text" id="taskTitle" name="taskTitle"><br>
-   <label>DueDate:</label><input type="text" id="taskDueDate" name="taskDueDate"><br>
-   <label>Details:</label><input type="text" id="taskDetails" name="taskDetails"><br>
-
-   <button name="insertDesignTask" onclick="insertTask()">Add</button>
 
 
    <br><br><br>

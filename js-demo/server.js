@@ -73,34 +73,19 @@ app.get("/boards/:board", (req, res, next) => {
     }
 });
 
-// app.post("/api/:boardTitle", (req, res, next) => {
-//     tasks.newBoard(req.body.boardTitle)
-//         .then((boardTitle) => {
-//             res.json({
-//                 "message": `added the following board`,
-//                 "data": boardTitle
-//             })
-//         })
-//         .catch((err) => {
-//             res.status(400).json({ "error": err.message });
-//             return;
-//         })
-// });
-
-app.get("/api/designtask/:taskTitle-:taskDueDate-:taskDetails", (req, res, next) => {
-    // console.log(req.params.taskTitle)
-    tasks.newTask(req.params.taskTitle, req.params.taskDueDate, req.params.taskDetails)
-        .then((task) => {
+app.post("/api/:boardTitle", (req, res, next) => {
+    tasks.newBoard(req.body.boardTitle)
+        .then((boardTitle) => {
             res.json({
-                "message": `success`,
-                "data": task
+                "message": `added the following board`,
+                "data": boardTitle
             })
         })
         .catch((err) => {
             res.status(400).json({ "error": err.message });
             return;
         })
-});
+})
 
 // Default response for any other request
 app.use(function (req, res) {

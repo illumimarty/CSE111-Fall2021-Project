@@ -58,14 +58,6 @@ class Tasks {
         return this.all(
             "insert into Board(Title) values(?)", [_title]
     )}
-
-    newTask(_title, _dueDate, _details) {
-        return this.all(
-            // if works, remove BoardId to make more general
-            // if works, make sure to make "To-Do" as default status
-            "insert into Task(BoardId, Title, DueDate, Details) values(2, ?, ?, ?)", [_title, _dueDate, _details]
-        )
-    }
 }
 
 module.exports = Tasks
