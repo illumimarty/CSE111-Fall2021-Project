@@ -6,17 +6,28 @@ body {
 .header {
     padding: 1% 8%;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 20% 20%;
 }
 .header .MTB {
     display: inline-block;
     font-size: 50px;
     font-weight: bold;
 }
-.header .dropdown-menu {
+.header .formbutton {
     display: inline-block;
     align-self: flex-end;
     justify-self: center;
+    border-radius: 10px;
+    background-color: #3C8AFF;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 4% 5%;
+}
+.header .dropdown-menu {
+    display: inline-block;
+    align-self: flex-end;
+    justify-self: left;
 }
 
 

@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Roboto';
+}
+.header {
+    padding: 1% 8%;
+    display: grid;
+    grid-template-columns: auto 20% 20%;
+}
+.header .MTB {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: bold;
+}
+.header .formbutton {
+    display: inline-block;
+    align-self: flex-end;
+    justify-self: center;
+    border-radius: 10px;
+    background-color: #3C8AFF;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 4% 5%;
+}
+
+
+.container {
+    background-color: #E0B87C;
+    margin: 0% auto 3% auto;
+    border-radius: 25px;
+    width: 85%;
+    height: 85%;
+    box-shadow: 0px 8px 10px rgb(185, 185, 185), 
+        -10px 8px 15px rgb(185, 185, 185), 10px 8px 15px rgb(185, 185, 185);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container .form {
+    width: 50%;
+    height: 65%;
+    background-color: #EAEAEA;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas: 
+        "title        comments     comments"
+        "description  comments     comments"
+        "duedate      comments     comments"
+        "assignees    comments     comments";
+}
+.container .form .Title {
+    grid-area: title;
+    margin-left: 10%;
+}
+.container .form .Description {
+    grid-area: description;
+    margin-left: 10%;
+}
+.container .form .DueDate {
+    grid-area: duedate;
+    margin-left: 10%;
+}
+.container .form .Assignees {
+    grid-area: assignees;
+    margin-left: 10%;
+}
+.container .form .Comments {
+    grid-area: comments;
+}
+.container .form .Comments .comments-chatbox {
+    width: 92%;
+    height: 60%;
+    background-color: #C4C4C4;
+}
+.container .form .Comments input {
+    margin-top: 2%;
+    width: 60%;
+}
+.container .form h1 {
+    font-size: 20px;
+}
