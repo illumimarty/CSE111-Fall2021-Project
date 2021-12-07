@@ -31,6 +31,20 @@
             )
       }
 
+      function insertBoard() {
+         var boardTitle = document.getElementById('boardName').value;
+         console.log(boardTitle);
+
+         const API_URL = `http://127.0.0.1:8092/api/${boardTitle}/`;
+         axios.get(`${API_URL}`)
+            .then(response => {
+               console.log("Success!")
+            })
+            .catch(error =>
+               console.error('insertBoard', error)
+            )
+      }
+
       function runQuery() {
          var selBoard = document.getElementById('board').value;
          console.log(selBoard);

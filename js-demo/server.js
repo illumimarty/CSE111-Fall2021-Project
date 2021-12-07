@@ -43,6 +43,8 @@ app.get("/boards", (req, res, next) => {
 });
 
 app.get("/boards/:board", (req, res, next) => {
+    console.log(req.params.board)
+
     if (req.params.board == "All") {
         tasks.allTasksInAllBoards(req.params.board)
             .then((board) => {
@@ -84,6 +86,20 @@ app.get("/allcomments", (req, res, next) => {
             return;
         })
 });
+
+app.post("/api/:boardTitle", (req, res, next) => {
+    tasks.newBoard(req.body.boardTitle)
+        .then((boardTitle) => {
+            res.json({
+                "message": `added the following board`,
+                "data": boardTitle
+            })
+        })
+        .catch((err) => {
+            res.status(400).json({ "error": err.message });
+            return;
+        })
+})
 
 // Default response for any other request
 app.use(function (req, res) {

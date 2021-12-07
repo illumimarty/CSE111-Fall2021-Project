@@ -32,7 +32,7 @@ class Tasks {
             "SELECT Title FROM Board ORDER BY Title", [])
     }
 
-    allTasksInAllBoards () {
+    allTasksInAllBoards() {
         return this.all(
             "select BoardId, Title, DueDate, Details, Status " +
             "from Task " +
@@ -61,6 +61,11 @@ class Tasks {
             "where Comment.UserId = User.UserId " +
             "and Comment.TaskId = Task.TaskId", [])
     }
+    
+    newBoard(_title) {
+        return this.all(
+            "insert into Board(Title) values(?)", [_title]
+    )}
 }
 
 module.exports = Tasks
