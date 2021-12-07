@@ -43,6 +43,8 @@ app.get("/boards", (req, res, next) => {
 });
 
 app.get("/boards/:board", (req, res, next) => {
+    console.log(req.params.board)
+
     if (req.params.board == "All") {
         tasks.allTasksInAllBoards(req.params.board)
             .then((board) => {
@@ -56,8 +58,8 @@ app.get("/boards/:board", (req, res, next) => {
                 return;
             })
     }
-    else if (req.params.board == "Engineering") {
-        tasks.allTasksInEngineering(req.params.board)
+    else {
+        tasks.allTasksByBoard(req.params.board)
             .then((board) => {
                 res.json({
                     "message": `Tasks in ${req.params.board}`,
@@ -69,32 +71,35 @@ app.get("/boards/:board", (req, res, next) => {
                 return;
             })
     }
-    else if (req.params.board == "Design") {
-        tasks.allTasksInDesign(req.params.board)
-            .then((board) => {
-                res.json({
-                    "message": `Tasks in ${req.params.board}`,
-                    "data": board
-                })
+});
+
+// app.post("/api/:boardTitle", (req, res, next) => {
+//     tasks.newBoard(req.body.boardTitle)
+//         .then((boardTitle) => {
+//             res.json({
+//                 "message": `added the following board`,
+//                 "data": boardTitle
+//             })
+//         })
+//         .catch((err) => {
+//             res.status(400).json({ "error": err.message });
+//             return;
+//         })
+// });
+
+app.get("/api/designtask/:taskTitle-:taskDueDate-:taskDetails", (req, res, next) => {
+    // console.log(req.params.taskTitle)
+    tasks.newTask(req.params.taskTitle, req.params.taskDueDate, req.params.taskDetails)
+        .then((task) => {
+            res.json({
+                "message": `success`,
+                "data": task
             })
-            .catch((err) => {
-                res.status(400).json({ "error": err.message });
-                return;
-            })
-    }
-    else if (req.params.board == "Directors") {
-        tasks.allTasksInDirectors(req.params.board)
-            .then((board) => {
-                res.json({
-                    "message": `Tasks in ${req.params.board}`,
-                    "data": board
-                })
-            })
-            .catch((err) => {
-                res.status(400).json({ "error": err.message });
-                return;
-            })
-    }
+        })
+        .catch((err) => {
+            res.status(400).json({ "error": err.message });
+            return;
+        })
 });
 
 // Default response for any other request

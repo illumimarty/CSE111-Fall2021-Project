@@ -32,7 +32,7 @@ class Tasks {
             "SELECT Title FROM Board ORDER BY Title", [])
     }
 
-    allTasksInAllBoards () {
+    allTasksInAllBoards() {
         return this.all(
             "select BoardId, Title, DueDate, Details, Status " +
             "from Task " +
@@ -46,23 +46,25 @@ class Tasks {
             "from Task " +
             "where BoardId = 3", [])
     }
-    allTasksInEngineering() {
+    allTasksByBoard(_board) {
         return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 1", [])
+            "select TaskId as id, Task.Title as title, Task.Status as status " +
+            "from Task, Board " +
+            "where Task.BoardId = Board.BoardId " + 
+            "and Board.Title = ?", [_board])
     }
-    allTasksInDesign() {
+
+    newBoard(_title) {
         return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 2", [])
-    }
-    allTasksInDirectors() {
+            "insert into Board(Title) values(?)", [_title]
+    )}
+
+    newTask(_title, _dueDate, _details) {
         return this.all(
-            "select Title, DueDate, Details, Status " +
-            "from Task " +
-            "where BoardId = 3", [])
+            // if works, remove BoardId to make more general
+            // if works, make sure to make "To-Do" as default status
+            "insert into Task(BoardId, Title, DueDate, Details) values(2, ?, ?, ?)", [_title, _dueDate, _details]
+        )
     }
 }
 
