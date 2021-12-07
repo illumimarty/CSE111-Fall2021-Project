@@ -48,7 +48,7 @@ class Tasks {
     }
     allTasksByBoard(_board) {
         return this.all(
-            "select TaskId as id, Task.Title as title, Task.Status as status " +
+            "select Task.BoardId as Board, Task.Title as Title, DueDate, Details, Status " +
             "from Task, Board " +
             "where Task.BoardId = Board.BoardId " + 
             "and Board.Title = ?", [_board])
