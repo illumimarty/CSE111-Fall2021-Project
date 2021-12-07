@@ -9,51 +9,51 @@ drop table Image;
 
 -- Create Schema
 CREATE TABLE User (
-    UserId int,
-    Username varchar,
-    Password varchar
+    UserId INTEGER primary key,
+    Username varchar not null,
+    Password varchar not null
 );
 
 CREATE TABLE BoardUsers (
-    BoardId int,
-    UserId int
+    BoardId integer NOT NULL,
+    UserId INTEGER NOT NULL
 );
 
 CREATE TABLE Board (
-    BoardId int,
-    Title string
+    BoardId INTEGER primary key,
+    Title string NOT NULL
 );
 
 CREATE TABLE Task (
-    TaskId int,
-    BoardId int,
+    TaskId INTEGER PRIMARY KEY,
+    BoardId INTEGER NOT NULL,
     Title string,
     DueDate varchar,
     Details string,
     Image varbinary,
-    Status char(15)
+    Status char(15) DEFAULT 'TO DO'
 );
 
 CREATE TABLE TaskAssignee (
-    TaskId int,
-    AssigneeId int
+    TaskId INTEGER NOT NULL,
+    AssigneeId INTEGER NOT NULL
 );
 
 CREATE TABLE Assignee (
-    UserId int,
-    Username varchar
+    UserId INTEGER NOT NULL,
+    Username varchar NOT NULL
 );
 
 CREATE TABLE Comment (
-    TaskId int,
-    UserId int,
-    CommentId int,
-    Message string,
-    Timestamp varchar
+    TaskId INTEGER NOT NULL,
+    UserId INTEGER NOT NULL,
+    CommentId INTEGER PRIMARY KEY NOT NULL,
+    Message string NOT NULL,
+    Timestamp varchar NOT NULL
 );
 
 CREATE TABLE Image (
-    TaskId int,
-    UserId int,
-    File varbinary
+    TaskId INTEGER NOT NULL,
+    UserId INTEGER NOT NULL,
+    File varbinary NOT NULL
 );
