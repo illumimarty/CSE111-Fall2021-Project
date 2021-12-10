@@ -40,7 +40,7 @@
          }
          console.log(boardTitle);
 
-         const API_URL = `http://127.0.0.1:8092/api/${boardTitle}-${date}/`;
+         const API_URL = `http://127.0.0.1:8092/api/${boardTitle}`;
          axios.get(`${API_URL}`)
             .then(response => {
                console.log("Success!")
