@@ -3,7 +3,7 @@ var express = require("express")
 var app = express()
 
 const Tasks = require('./tasks')
-var tasks = new Tasks('../task.sqlite')
+var tasks = new Tasks('./task.sqlite')
 
 // Server port
 var HTTP_PORT = 8092
